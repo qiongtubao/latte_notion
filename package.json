@@ -1,0 +1,23 @@
+{
+    "name": "latte_notion",
+    "version": "1.0.0",
+    "description": "A minimal Electron application",
+    "main": "./src/main.js",
+    "scripts": {
+      "start": "electron ."
+    },
+    "repository": "https://github.com/qiongtubao/latte_notion.git",
+    "keywords": [
+      "Electron",
+      "quick",
+      "start",
+      "tutorial",
+      "demo"
+    ],
+    "author": "latte",
+    "license": "CC0-1.0",
+    "devDependencies": {
+      "electron": "^29.0.1"
+    }
+  }
+  
