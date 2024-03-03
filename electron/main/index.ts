@@ -43,6 +43,7 @@ let win: BrowserWindow | null = null
 const preload = join(__dirname, '../preload/index.mjs')
 const url = process.env.VITE_DEV_SERVER_URL
 const indexHtml = join(process.env.DIST, 'index.html')
+const vitePreeHtml = "./src/vitepress/.vitepress/dist/index.html"
 
 async function createWindow() {
   win = new BrowserWindow({
@@ -64,7 +65,8 @@ async function createWindow() {
     // Open devTool if the app is not packaged
     win.webContents.openDevTools()
   } else {
-    win.loadFile(indexHtml)
+    // win.loadFile(indexHtml)
+    win.loadFile(vitePreeHtml)
   }
 
   // Test actively push message to the Electron-Renderer
