@@ -1,72 +1,33 @@
-<template>
-  <div class="test-container">
-    <div class="editor-container">
-        <textarea cols="40" rows="10" v-model="value" @input="handleInput"></textarea>
-    </div>
-    <svg id="mermaidSvg">
-    </svg>
-  </div>
-  <codemirror
-    v-model="code"
-    placeholder="Code gose here..."
-    :style="{ height: '400px' }"
-    :autofocus="true"
-    :indent-with-tab="true"
-    :tabSize="2"
-    :extensions="extensions"
-    @ready="log('ready', $event)"
-    @change="log('change', $event)"
-    @focus="log('focus', $event)"
-    @blur="log('blur', $event)"
-  />
-</template>
- 
-<script>
-import { Codemirror } from "vue-codemirror";
-import { javascript } from "@codemirror/lang-javascript";
-import { oneDark } from "@codemirror/theme-one-dark";
- 
-import { ref } from "vue";
-import mermaid from "mermaid"
-
+<script lang="ts">
+import LatteMermaid from '../components/LatteMermaid.vue'
 export default {
   components: {
-    Codemirror,
+    LatteMermaid
+  },
+  mounted() {
+
   },
   methods: {
     
-    mounted() {
-        
-    }
+   
   },
   setup() {
-    const code = ref(`console.log('Hello, world!')`);
-    const extensions = [javascript(), oneDark];
-    mermaid.initialize({startOnLoad: true, render: 'canvas'});
-    //const mermaidSvg = `
-    //    pie title 人员构成
-    //    "工程师" : 43
-    //    "销售" : 20
-    //    "市场" : 17
-    //    "其他" : 5
-    //    "管理" : 15`;
-    const mermaidSvg = `
-    flowchart LR
-        A[Hard] -->|Text| B(Round)
-        B --> C{Decision}
-        C -->|One| D[Result 1]
-        C -->|Two| E[Result 2]`;
-    mermaid.render("mermaidSvg",mermaidSvg);
-    const mermaidChart = "";
+    //const dayTime = `flowchart LR\nA[Hard] -->|Text| B(Round)\nB --> C{Decision}\nC -->|One| D[Result 1]\nC -->|Two| E[Result 2]`
+    const dayTime = `pie 
+    "Dogs": 386
+    "Cats": 85.9
+    "Rats": 15
+    `;
     return {
-      mermaidChart,
-      code,
-      extensions,
-      log: console.log,
+      dayTime,
     };
   },
 };
 </script>
+<template>
+  <LatteMermaid :code="dayTime"></LatteMermaid>
+</template>
+
 
 <style scoped>
     .test-container {
@@ -103,4 +64,4 @@ export default {
         font-family: 'trebuchet ms', verdana, arial, sans-serif;
         font-size: 16px;
     }
-</style>
+</style>../components/LatteMermaid.vue
