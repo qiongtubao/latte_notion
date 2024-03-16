@@ -3,6 +3,7 @@ import './style.css'
 import App from './App.vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import VueCodemirror from 'vue-codemirror'
 import {createRouter, createWebHashHistory} from 'vue-router'
 const Wecome = () => import('./views/Wecome.vue')
 const Home = () => import('./views/Home.vue')
@@ -23,6 +24,7 @@ const router = createRouter({
 })
 const app = createApp(App) 
 app.use(router)
+app.use(VueCodemirror)
 app.use(ElementPlus, {
     
 })

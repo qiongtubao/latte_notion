@@ -1,21 +1,38 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <div>Wecome</div>
+  <codemirror
+    v-model="code"
+    placeholder="Code gose here..."
+    :style="{ height: '400px' }"
+    :autofocus="true"
+    :indent-with-tab="true"
+    :tabSize="2"
+    :extensions="extensions"
+    @ready="log('ready', $event)"
+    @change="log('change', $event)"
+    @focus="log('focus', $event)"
+    @blur="log('blur', $event)"
+  />
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+ 
+<script>
+import { Codemirror } from "vue-codemirror";
+import { javascript } from "@codemirror/lang-javascript";
+import { oneDark } from "@codemirror/theme-one-dark";
+ 
+import { ref } from "vue";
+export default {
+  components: {
+    Codemirror,
+  },
+  setup() {
+    const code = ref(`console.log('Hello, world!')`);
+    const extensions = [javascript(), oneDark];
+ 
+    return {
+      code,
+      extensions,
+      log: console.log,
+    };
+  },
+};
+</script>
