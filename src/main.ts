@@ -8,10 +8,12 @@ import {createRouter, createWebHashHistory} from 'vue-router'
 const Wecome = () => import('./views/Wecome.vue')
 const Home = () => import('./views/Home.vue')
 const Hello = () => import('./views/Hello.vue')
+const PieTime = () => import('./views/day/live/PieTime.vue')
 const routes = [
   { path: '/', component: Wecome },
   { path: '/Home', component: Home},
-  { path: '/Hello', component: Hello}
+  { path: '/Hello', component: Hello},
+  { path: '/PieTime', component: PieTime}
 ]
 
 // 3. 创建路由实例并传递 `routes` 配置

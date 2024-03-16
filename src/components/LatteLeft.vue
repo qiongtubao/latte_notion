@@ -17,7 +17,7 @@
             <span>日</span>
           </template>
           <el-menu-item-group title="生活">
-            <el-menu-item index="1-1">时间统计</el-menu-item>
+            <el-menu-item index="1-1"><router-link to="/PieTime">时间统计</router-link></el-menu-item>
             <el-menu-item index="1-2">消费统计</el-menu-item>
           </el-menu-item-group>
           <el-menu-item-group title="工作">
