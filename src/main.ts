@@ -13,7 +13,7 @@ const routes = [
   { path: '/', component: Wecome },
   { path: '/Home', component: Home},
   { path: '/Hello', component: Hello},
-  { path: '/PieTime', component: PieTime}
+  { path: '/PieTime', component: PieTime, props: true}
 ]
 
 // 3. 创建路由实例并传递 `routes` 配置

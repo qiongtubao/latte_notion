@@ -2,7 +2,8 @@
     <svg :id="randomId"></svg>
     <svg ref="mermaidSvg"></svg>
     <codemirror
-        v-model="code"
+        ref="codeEditor"
+        v-model="editorCode"
         placeholder="Code gose here..."
         :style="{ height: '400px' }"
         :autofocus="true"
@@ -25,12 +26,14 @@
     import { ref } from "vue";
     import mermaid from "mermaid"
     export default {
-        props: ['code'],
+        props: [ 
+            "code"
+        ],
         mounted() {
-            this.change(this.code)
+            this.change(this.editorCode)
         },
         methods: {
-            change(code) {
+            change(code: string) {
                 var self = this;
                 mermaid.initialize({startOnLoad: true});
                 mermaid.render(this.randomId,code).then(({svg}) => {
@@ -43,11 +46,17 @@
         setup(props) {
             const extensions = [javascript(), oneDark]; 
             return {
-                code: props.code,
+                editorCode: props.code,
                 extensions,
                 log: console.log,
                 randomId: "mermaid-" + Math.random().toString(36).substr(2,9)
             };
+        },
+        watch: {
+            code(value) {
+                this.editorCode = value;
+                this.change(value);
+            }
         }
     };
 </script>
